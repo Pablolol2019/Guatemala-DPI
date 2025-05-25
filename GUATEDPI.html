@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>GUATEDPI - Consulta de DPI</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; max-width: 900px; margin: auto; padding: 20px; }
+    h1 { color: #2c3e50; }
+    input, button { padding: 10px; margin-top: 10px; width: 100%; font-size: 16px; }
+    #resultado { margin-top: 20px; background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #007bff; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<h1>Bienvenidos a GUATEDPI</h1>
+<p>Ingresa tu número de DPI para obtener información sobre tu departamento y municipio:</p>
+<input type="text" id="dpi" placeholder="Ej. 1234567890101" />
+<button onclick="consultarDPI()">Consultar</button>
+
+<div id="resultado"></div>
+
+<script>
+const datos = {
+    101: "Departamento: Guatemala\nMunicipio: Guatemala\nPoblación: 3,015,081\nExtensión: 2,253 km²\nIdiomas: Español, Kaqchiquel, Poqomam\nLugares turísticos: Zoológico La Aurora, IRTRA Mundo Petapa",
+    102: "Departamento: Guatemala\nMunicipio: Santa Catarina Pinula\nZona residencial y montañosa.",
+    108: "Departamento: Guatemala\nMunicipio: Mixco\nMunicipio grande colindante con la capital.",
+    201: "Departamento: El Progreso\nMunicipio: Guastatoya\nCapital del departamento, centro administrativo.",
+    202: "Departamento: El Progreso\nMunicipio: Morazán\nZona agrícola, clima seco.",
+    301: "Departamento: Sacatepéquez\nMunicipio: Antigua Guatemala\nCiudad colonial patrimonio de la humanidad.",
+    302: "Departamento: Sacatepéquez\nMunicipio: Jocotenango\nMunicipio aledaño a Antigua, artesanía.",
+    401: "Departamento: Chimaltenango\nMunicipio: Chimaltenango\nCentro regional, acceso al altiplano.",
+    402: "Departamento: Chimaltenango\nMunicipio: San José Poaquil\nMunicipio con fuerte cultura Kaqchikel.",
+    501: "Departamento: Escuintla\nMunicipio: Escuintla\nCentro industrial y azucarero.",
+    601: "Departamento: Santa Rosa\nMunicipio: Cuilapa\nCabecera departamental.",
+    701: "Departamento: Sololá\nMunicipio: Sololá\nCercano al Lago Atitlán.",
+    801: "Departamento: Totonicapán\nMunicipio: Totonicapán\nFuerte identidad maya.",
+    901: "Departamento: Quetzaltenango\nMunicipio: Quetzaltenango\nCiudad de Xela.",
+    1001: "Departamento: Suchitepéquez\nMunicipio: Mazatenango\nCentro comercial del suroccidente.",
+    1101: "Departamento: Retalhuleu\nMunicipio: Retalhuleu\nTurismo IRTRA, clima cálido.",
+    1201: "Departamento: San Marcos\nMunicipio: San Marcos\nFrontera con México, volcánico.",
+    1301: "Departamento: Huehuetenango\nMunicipio: Huehuetenango\nDiversidad étnica y cultural.",
+    1401: "Departamento: Quiché\nMunicipio: Santa Cruz del Quiché\nCentro K'iche'.",
+    1501: "Departamento: Baja Verapaz\nMunicipio: Salamá\nBosques y reserva del Quetzal.",
+    1601: "Departamento: Alta Verapaz\nMunicipio: Cobán\nBiodiversidad, Semuc Champey.",
+    1701: "Departamento: Petén\nMunicipio: Flores\nRuinas de Tikal, selva tropical.",
+    1801: "Departamento: Izabal\nMunicipio: Puerto Barrios\nPuerto caribeño.",
+    1901: "Departamento: Zacapa\nMunicipio: Zacapa\nClima árido, producción agrícola.",
+    2001: "Departamento: Chiquimula\nMunicipio: Chiquimula\nConocida como la Perla de Oriente.",
+    2101: "Departamento: Jalapa\nMunicipio: Jalapa\nZona templada agrícola.",
+    2201: "Departamento: Jutiapa\nMunicipio: Jutiapa\nGanadería, clima cálido."
+};
+
+function consultarDPI() {
+  const dpi = document.getElementById("dpi").value;
+  const codigo = parseInt(dpi.slice(-4));
+  const resultado = document.getElementById("resultado");
+
+  if (!datos[codigo]) {
+    resultado.innerText = "❌ DPI no reconocido o no registrado aún.";
+  } else {
+    resultado.innerText = `✅ Código extraído: ${codigo}\n\n${datos[codigo]}`;
+  }
+}
+</script>
+
+</body>
+</html>
